@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>eCommerce- - Log In</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/form.css">
+</head>
+<body>
+  <img class="loader" src="img/loading.gif"></img>
+
+  <section class="form-section">
+    <div class="form-container">
+      <div class="form">
+        <h1 class="form-heading">SIGN UP HERE
+        </h1>
+        <input
+            type        ="text"
+            id          ="name"
+            autocomplete="off"
+            placeholder ="FullName"
+        >
+        <input
+            type        ="email"
+            id          ="email"
+            autocomplete="off"
+            placeholder ="email"
+        >
+        <input
+            type        ="password"
+            id          ="password"
+            autocomplete="off"
+            placeholder ="password"
+        >
+        <input
+            type        ="number"
+            id          ="number"
+            autocomplete="off"
+            placeholder ="number"
+        >
+        <span class="error">**ERROR</span>
+        <div>
+          <input type="checkbox" id="tc" class="tc-text">
+          <label for="tc">Agree our terms and conditions</label>
+        </div>     
+        <button class="submit-btn">Sing Up</button>
+        <a class="other-form-link" href="/login">
+          Already have an account? Login here
+        </a>
+        <img class="form-img" src="./img/signup-bg.png">
+      </div>
+    </div>
+  </section>
+  <script src="./js/common.js"></script>
+  <script src="./js/form.js"></script>
+</body>
+</html>
