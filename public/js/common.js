@@ -14,8 +14,9 @@ const processData = (data) => {
   loader.style.display = null
   if(data.alert){
     showFormError(data.alert)
-  }else {
-    //Codigo cuando si se pudo
+  }else if(data.email) {
+    sessionStorage.user = JSON.stringify(data)
+    location.replace('/')
   }
 }
 

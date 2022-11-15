@@ -2,7 +2,7 @@ import express from 'express';
 import bcrypt, { hash } from 'bcrypt';
 import stripe from 'stripe';
 import { initializeApp } from 'firebase/app';
-import { collection, doc, getDoc, getFirestore, setDoc } from 'firebase/firestore'
+import { collection, doc, getDoc, getFirestore, setDoc, updateDoc } from 'firebase/firestore'
 
 
 //Configuracion de Firebase
@@ -60,15 +60,17 @@ app.post('/signup', (req, res) => {
         res.json({'alert': 'email already exist'})
       } else {
         //encriptar el password
-        bcrypt.genSalt(10, (err, hash) => {
-          req.body.password = hash
-          req.body.seller = false
-          //Subirlo a la base de datos
-          setDoc(doc(users, email ), req.body).then(data => {
-            res.json({
-              name: req.body.name,
-              email: req.body.email,
-              seller: req.body.seller
+        bcrypt.genSalt(10, (err, salt) => {
+          bcrypt.hash(password,salt, (err,hash)=>{
+            req.body.password = hash
+            req.body.seller = false
+            //Subirlo a la base de datos
+            setDoc(doc(users, email ), req.body).then(data => {
+              res.json({
+                name: req.body.name,
+                email: req.body.email,
+                seller: req.body.seller
+              })
             })
           })
         })
@@ -117,6 +119,35 @@ app.post('/login', (req, res) => {
       }
     })
 
+})
+app.get('/seller',(req,res)=>{
+  res.sendFile('seller.html',{root:'public'})
+})
+app.post('/seller',(req,res)=>{
+  let{name,address,about,number,email}=req.body
+  if(!name.length || !address.length ||
+     !about.length        || number.length   ||
+     !Number(number)){
+    return res.json({
+      'alert': 'Something went wrong'
+    })
+  }else{
+    const sellers = collection(db,"sellers")
+    setDoc(doc(sellers,email),req.body)
+      .then(laCosa =>{
+        const users = collection(db,"users")
+        updateDoc(doc(users, email),{
+          seller: true
+        }).then(laCosa =>{
+          res.json({
+            'seller': true
+          })
+        })
+      })
+  }
+})
+app.get('/dashboard',(req,res)=>{
+  res.sendFile('dashboard.html',{root:'public'})
 })
 
 app.listen(3000, () => {

@@ -1,3 +1,8 @@
+window.onload = ()=>{
+  let user = JSON.parse(sessionStorage.user || null)
+  console.log(user)
+}
+
 const navbar = document.querySelector('.navbar')
 
 window.addEventListener('scroll', () => {
@@ -23,6 +28,11 @@ const createNavbar = () => {
       <li class="link-item">
         <a class="link active" href="#">About</a>
       </li>
+      {% if($user.seller) %}
+      <li class="link-item">
+        <a class="link active" href="#">Dashboard</a>
+      </li>
+      {% endif %}
       <li class="link-item">
         <a class="link active" href="#">Contact</a>
       </li>

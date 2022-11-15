@@ -122,7 +122,6 @@ input:focus, textarea:focus {
   font-family: 'lato',sans-serif;
 }
 #tc{
-  -webkit-appearance: none;
   width: 15px;
   height: 15px;
   padding: 0;
