@@ -4,3 +4,68 @@
   box-sizing: border-box;
   font-family: 'lato',sans-serif;
 }
+
+body{
+  width: 100%;
+  background-color: #fff;
+  padding: 20px 20px;
+  font-family: 'lato',sans-serif;
+}
+.add-product{
+  width: 100%;
+  height: 60px;
+  background: #fff;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px;
+  margin-top: 80px;
+}
+
+.text{
+  font-size: 1.2rem;
+}
+
+.add-product-btn {
+  font-family: 'Cinzel';
+  text-decoration: none;
+  color: #fff;
+  background: #d5be86;
+  text-transform: capitalize;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+.seller-products{
+  margin-top: 30px;
+}
+
+.product-container{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 20px;
+}
+
+.product-card{
+  width: 100%;
+  max-width: 300px;
+}
+
+.no-product{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 40%;
+  display: none;
+}
+.loader{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 40%;
+  display: none;
+}
